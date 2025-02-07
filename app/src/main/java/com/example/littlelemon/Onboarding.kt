@@ -1,5 +1,8 @@
 package com.example.littlelemon
 
+import android.content.Context
+import android.content.SharedPreferences
+import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -24,19 +27,50 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.littlelemon.ui.theme.PrimaryColor
 import com.example.littlelemon.ui.theme.SecondaryColor
 
 @Composable
-fun Onboarding() {
+fun OnboardingScreen(navController: NavHostController) {
     var firstName by remember { mutableStateOf("") }
     var lastName by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
+    val context = LocalContext.current
+    val sharedPreferences = remember { context.getSharedPreferences("user_prefs", Context.MODE_PRIVATE) }
+
+
+    fun registrationHandler(){
+        if (firstName.isBlank() || lastName.isBlank() || email.isBlank()) {
+            Toast.makeText(
+                context,
+                "Registration unsuccessful. Please enter all data.",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+        else {
+            Toast.makeText(
+                context,
+                "Registration successful!",
+                Toast.LENGTH_SHORT
+            ).show()
+
+            with(sharedPreferences.edit()){
+                putString("FIRST_NAME", firstName)
+                putString("LAST_NAME", lastName)
+                putString("EMAIL", email)
+                putBoolean("IS_LOGGED_IN", true)
+                apply()
+            }
+            navController.navigate(Home.route)
+        }
+    }
+
     Column(modifier = Modifier.fillMaxSize()) {
         Box(
             modifier = Modifier
@@ -124,7 +158,9 @@ fun Onboarding() {
                     .padding(horizontal = 20.dp),
             ) {
                 Button(
-                    onClick = {},
+                    onClick = {
+                        registrationHandler()
+                    },
                     colors = ButtonColors(
                         containerColor = SecondaryColor,
                         contentColor = Color.Black,
@@ -142,10 +178,4 @@ fun Onboarding() {
             }
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun OnboardingPreview() {
-    Onboarding()
 }
