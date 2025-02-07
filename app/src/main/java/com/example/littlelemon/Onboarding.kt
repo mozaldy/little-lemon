@@ -1,7 +1,6 @@
 package com.example.littlelemon
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -30,9 +29,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.littlelemon.ui.theme.PrimaryColor
 import com.example.littlelemon.ui.theme.SecondaryColor
 
@@ -125,30 +126,18 @@ fun OnboardingScreen(navController: NavHostController) {
                 Text(
                     text = "First name", fontSize = 14.sp
                 )
-                OutlinedTextField(value = firstName, onValueChange = { firstName = it }, label = {
-                    Text(
-                        text = "First name", fontSize = 14.sp
-                    )
-                }, modifier = Modifier.fillMaxWidth()
+                OutlinedTextField(value = firstName, onValueChange = { firstName = it }, placeholder = {Text("Tilly")}, modifier = Modifier.fillMaxWidth()
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
                     text = "Last name", fontSize = 14.sp
                 )
-                OutlinedTextField(value = lastName, onValueChange = { lastName = it }, label = {
-                    Text(
-                        text = "Last name", fontSize = 14.sp
-                    )
-                }, modifier = Modifier.fillMaxWidth())
+                OutlinedTextField(value = lastName, onValueChange = { lastName = it }, placeholder = {Text("Jane")}, modifier = Modifier.fillMaxWidth())
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
                     text = "Email", fontSize = 14.sp
                 )
-                OutlinedTextField(value = email, onValueChange = { email = it }, label = {
-                    Text(
-                        text = "Email", fontSize = 14.sp
-                    )
-                }, modifier = Modifier.fillMaxWidth())
+                OutlinedTextField(value = email, onValueChange = { email = it }, placeholder = {Text("tilly@site.com")}, modifier = Modifier.fillMaxWidth())
 
             }
             Box(
@@ -178,4 +167,11 @@ fun OnboardingScreen(navController: NavHostController) {
             }
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun OnboardingScreenPreview(){
+    val navController = rememberNavController()
+    OnboardingScreen(navController)
 }
