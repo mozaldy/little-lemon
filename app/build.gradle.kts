@@ -52,6 +52,9 @@ dependencies {
 
     // Feature module support for Fragments
     implementation(libs.androidx.navigation.dynamic.features.fragment)
+    implementation(libs.androidx.storage)
+    implementation(libs.androidx.storage)
+    implementation(libs.androidx.runtime.livedata)
 
     // Testing Navigation
     androidTestImplementation(libs.androidx.navigation.testing)
@@ -66,6 +69,9 @@ dependencies {
     implementation("io.ktor:ktor-client-cio:$ktorVersion")
     implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
     implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
+
+    // Glide implementation
+    implementation(libs.glide)
 
     // Room implementation
     implementation(libs.androidx.room.runtime)

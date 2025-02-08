@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
@@ -35,8 +36,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.littlelemon.ui.theme.KarlaFamily
-import com.example.littlelemon.ui.theme.PrimaryColor
-import com.example.littlelemon.ui.theme.SecondaryColor
+import com.example.littlelemon.ui.theme.LittleLemonColor
 
 @Composable
 fun OnboardingScreen(navController: NavHostController) {
@@ -76,23 +76,22 @@ fun OnboardingScreen(navController: NavHostController) {
     Column(modifier = Modifier.fillMaxSize()) {
         Box(
             modifier = Modifier
-                .fillMaxHeight(0.15f)
-                .fillMaxWidth(),
-            contentAlignment = Alignment.TopCenter,
+                .fillMaxWidth()
+                .height(100.dp)
         ) {
             Image(
                 painter = painterResource(R.drawable.logo),
                 contentDescription = "Little Lemon Logo",
                 modifier = Modifier
-                    .fillMaxSize(0.7f)
-                    .padding(top = 40.dp)
+                    .size(180.dp)
+                    .align(Alignment.Center)
             )
         }
         Box(
             modifier = Modifier
                 .fillMaxHeight(0.15f)
                 .fillMaxWidth()
-                .background(color = PrimaryColor), contentAlignment = Alignment.Center
+                .background(color = LittleLemonColor.green), contentAlignment = Alignment.Center
         ) {
             Text(
                 text = "Let's get to know you",
@@ -157,9 +156,9 @@ fun OnboardingScreen(navController: NavHostController) {
                         registrationHandler()
                     },
                     colors = ButtonColors(
-                        containerColor = SecondaryColor,
+                        containerColor = LittleLemonColor.yellow,
                         contentColor = Color.Black,
-                        disabledContainerColor = SecondaryColor,
+                        disabledContainerColor = LittleLemonColor.yellow,
                         disabledContentColor = Color.Black
                     ),
                     border = BorderStroke(width = 1.dp, color = Color.Black),

@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.compose.rememberNavController
 import androidx.room.Room
@@ -33,6 +34,8 @@ class MainActivity : ComponentActivity() {
         Room.databaseBuilder(applicationContext, AppDatabase::class.java, "database").build()
     }
 
+
+
     private suspend fun fetchMenu(): List<MenuItemNetwork> {
         val response = httpClient.get("https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Working-With-Data-API/main/menu.json") {
             headers {
@@ -54,15 +57,28 @@ class MainActivity : ComponentActivity() {
         setContent {
             val navController = rememberNavController()
             LittleLemonTheme {
-                Navigation(navController)
+                Navigation(navController, database)
             }
         }
         lifecycleScope.launch(Dispatchers.IO) {
             if (database.menuItemDao().isEmpty()) {
+                Log.d("empty", "empty")
                 val menuItemsNetwork = fetchMenu()
                 val menuItemsRoom = menuItemsNetwork.map { it.toMenuItemRoom() }
                 database.menuItemDao().insertAll(*menuItemsRoom.toTypedArray())
+
+            }
+            else {
+                Log.d("not empty", "bruh")
+            }
+
+        }
+        database.menuItemDao().getAllMenuItems().observe(this) { items ->
+            Log.d("not empty", "Number of items: ${items.size}")
+            items.forEach { item ->
+                Log.d("Menu Item", "Title: ${item.title}, Category: ${item.category}")
             }
         }
     }
+
 }

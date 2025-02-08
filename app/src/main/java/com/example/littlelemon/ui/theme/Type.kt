@@ -9,38 +9,64 @@ import com.example.littlelemon.R
 import androidx.compose.ui.text.font.Font
 
 // Set of Material typography styles to start with
-val Typography = Typography(
-    bodyLarge = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 16.sp,
-        lineHeight = 24.sp,
-        letterSpacing = 0.5.sp
-    )
-    /* Other default text styles to override
-    titleLarge = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 22.sp,
-        lineHeight = 28.sp,
-        letterSpacing = 0.sp
-    ),
-    labelSmall = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Medium,
-        fontSize = 11.sp,
-        lineHeight = 16.sp,
-        letterSpacing = 0.5.sp
-    )
-    */
-)
-
-
 
 val MarkaziTextFamily = FontFamily(
-    Font(R.font.markazi_text_medium, FontWeight.Medium)
+    Font(R.font.markazi_text_regular, weight = FontWeight.Normal),
+    Font(R.font.markazi_text_medium, weight = FontWeight.Medium),
+    Font(R.font.markazi_text_semibold, weight = FontWeight.SemiBold),
+    Font(R.font.markazi_text_bold, weight = FontWeight.Bold)
 )
 
 val KarlaFamily = FontFamily(
-    Font(R.font.karla_regular, FontWeight.Normal)
+    Font(R.font.karla_regular, weight = FontWeight.Normal),
+    Font(R.font.karla_medium, weight = FontWeight.Medium),
+    Font(R.font.karla_semibold, weight = FontWeight.SemiBold),
+    Font(R.font.karla_bold, weight = FontWeight.Bold)
 )
+
+
+val Typography = Typography(
+    displayLarge = TextStyle(
+        fontSize = 64.sp,
+        fontWeight = FontWeight.Medium,
+        color = LittleLemonColor.yellow,
+        fontFamily = MarkaziTextFamily
+    ),
+    displayMedium = TextStyle(
+        fontSize = 38.sp,
+        fontWeight = FontWeight.Normal,
+        color = LittleLemonColor.cloud,
+        fontFamily = MarkaziTextFamily
+    ),
+    displaySmall = TextStyle(
+        fontSize = 24.sp,
+        fontWeight = FontWeight.Normal,
+        color = LittleLemonColor.cloud,
+        fontFamily = MarkaziTextFamily
+    ),
+    headlineLarge = TextStyle(
+        fontSize = 18.sp,
+        fontWeight = FontWeight.Bold,
+        color = LittleLemonColor.charcoal,
+        fontFamily = KarlaFamily,
+    ),
+    headlineMedium = TextStyle(
+        color = LittleLemonColor.charcoal,
+        fontSize = 18.sp,
+        fontWeight = FontWeight.Bold,
+        fontFamily = KarlaFamily
+    ),
+    bodyLarge = TextStyle(
+        color = LittleLemonColor.green
+    ),
+    bodyMedium = TextStyle(
+        fontWeight = FontWeight.Bold,
+        color = LittleLemonColor.green
+    ),
+    headlineSmall = TextStyle(
+        fontSize = 14.sp,
+        fontWeight = FontWeight.Bold
+    )
+)
+
+

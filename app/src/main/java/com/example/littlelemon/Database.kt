@@ -29,8 +29,6 @@ interface MenuItemDao {
 
     @Insert
     fun insertAll(vararg menuItems: MenuItemRoom)
-
-
 }
 
 @Database(entities = [MenuItemRoom::class], version = 1)
