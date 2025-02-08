@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -24,26 +25,24 @@ import com.example.littlelemon.ui.theme.PrimaryColor
 
 @Composable
 fun HomeScreen(navController: NavHostController) {
-    Row(
+    Box(
         modifier = Modifier
             .fillMaxWidth()
             .fillMaxHeight(0.15f)
             .padding(horizontal = 20.dp, vertical = 10.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
     ) {
         Image(
             painter = painterResource(R.drawable.logo),
             contentDescription = "Little Lemon Logo",
             modifier = Modifier
-                .size(250.dp)
+                .size(180.dp).align(Alignment.Center)
         )
 
         Image(
             painter = painterResource(R.drawable.profile),
             contentDescription = "Profile Picture",
             modifier = Modifier
-                .size(48.dp).clip(CircleShape)
+                .size(48.dp).clip(CircleShape).align(Alignment.CenterEnd)
                 .border(2.dp, PrimaryColor, CircleShape).clickable {
                     navController.navigate(Profile.route)
                 }

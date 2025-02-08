@@ -34,6 +34,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.littlelemon.ui.theme.KarlaFamily
 import com.example.littlelemon.ui.theme.PrimaryColor
 import com.example.littlelemon.ui.theme.SecondaryColor
 
@@ -97,6 +98,7 @@ fun OnboardingScreen(navController: NavHostController) {
                 text = "Let's get to know you",
                 fontSize = 26.sp,
                 color = Color.White,
+                fontFamily = KarlaFamily
             )
         }
         Column(
@@ -113,7 +115,8 @@ fun OnboardingScreen(navController: NavHostController) {
                 Text(
                     text = "Personal information",
                     fontWeight = FontWeight.SemiBold,
-                    fontSize = 18.sp
+                    fontSize = 18.sp,
+                    fontFamily = KarlaFamily
                 )
             }
             Column(
@@ -124,18 +127,21 @@ fun OnboardingScreen(navController: NavHostController) {
             ) {
 
                 Text(
-                    text = "First name", fontSize = 14.sp
+                    text = "First name", fontSize = 14.sp,
+                    fontFamily = KarlaFamily
                 )
                 OutlinedTextField(value = firstName, onValueChange = { firstName = it }, placeholder = {Text("Tilly")}, modifier = Modifier.fillMaxWidth()
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
-                    text = "Last name", fontSize = 14.sp
+                    text = "Last name", fontSize = 14.sp,
+                    fontFamily = KarlaFamily
                 )
                 OutlinedTextField(value = lastName, onValueChange = { lastName = it }, placeholder = {Text("Jane")}, modifier = Modifier.fillMaxWidth())
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
-                    text = "Email", fontSize = 14.sp
+                    text = "Email", fontSize = 14.sp,
+                    fontFamily = KarlaFamily
                 )
                 OutlinedTextField(value = email, onValueChange = { email = it }, placeholder = {Text("tilly@site.com")}, modifier = Modifier.fillMaxWidth())
 
@@ -161,7 +167,8 @@ fun OnboardingScreen(navController: NavHostController) {
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(
-                        text = "Register", fontWeight = FontWeight.SemiBold, fontSize = 18.sp
+                        text = "Register", fontWeight = FontWeight.SemiBold, fontSize = 18.sp,
+                        fontFamily = KarlaFamily
                     )
                 }
             }

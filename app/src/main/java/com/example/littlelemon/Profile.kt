@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
@@ -33,11 +34,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.littlelemon.ui.theme.KarlaFamily
 import com.example.littlelemon.ui.theme.SecondaryColor
 
 
 @Composable
-fun ProfileScreen(navController: NavHostController){
+fun ProfileScreen(navController: NavHostController) {
     var firstName by remember { mutableStateOf("") }
     var lastName by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
@@ -63,19 +65,17 @@ fun ProfileScreen(navController: NavHostController){
         navController.navigate(Onboarding.route)
     }
 
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(modifier = Modifier.fillMaxSize().padding(horizontal = 20.dp, vertical = 10.dp)) {
         Box(
             modifier = Modifier
                 .fillMaxHeight(0.15f)
                 .fillMaxWidth(),
-            contentAlignment = Alignment.TopCenter,
         ) {
             Image(
                 painter = painterResource(R.drawable.logo),
                 contentDescription = "Little Lemon Logo",
                 modifier = Modifier
-                    .fillMaxSize(0.7f)
-                    .padding(top = 40.dp)
+                    .size(180.dp)
             )
         }
         Column(
@@ -85,25 +85,25 @@ fun ProfileScreen(navController: NavHostController){
             Box(
                 modifier = Modifier
                     .fillMaxHeight(0.2f)
-                    .fillMaxWidth()
-                    .padding(horizontal = 20.dp),
+                    .fillMaxWidth(),
                 contentAlignment = Alignment.CenterStart,
             ) {
                 Text(
                     text = "Personal information",
                     fontWeight = FontWeight.SemiBold,
-                    fontSize = 18.sp
+                    fontSize = 18.sp,
+                    fontFamily = KarlaFamily
                 )
             }
             Column(
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxWidth()
-                    .padding(horizontal = 20.dp)
             ) {
 
                 Text(
-                    text = "First name", fontSize = 14.sp
+                    text = "First name", fontSize = 14.sp,
+                    fontFamily = KarlaFamily
                 )
                 OutlinedTextField(
                     value = firstName,
@@ -116,7 +116,8 @@ fun ProfileScreen(navController: NavHostController){
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
-                    text = "Last name", fontSize = 14.sp
+                    text = "Last name", fontSize = 14.sp,
+                    fontFamily = KarlaFamily
                 )
                 OutlinedTextField(
                     value = lastName,
@@ -129,7 +130,8 @@ fun ProfileScreen(navController: NavHostController){
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
-                    text = "Email", fontSize = 14.sp
+                    text = "Email", fontSize = 14.sp,
+                    fontFamily = KarlaFamily
                 )
                 OutlinedTextField(
                     value = email,
@@ -146,7 +148,6 @@ fun ProfileScreen(navController: NavHostController){
                 modifier = Modifier
                     .fillMaxHeight(0.2f)
                     .fillMaxWidth()
-                    .padding(horizontal = 20.dp),
             ) {
                 Button(
                     onClick = {
@@ -163,7 +164,8 @@ fun ProfileScreen(navController: NavHostController){
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(
-                        text = "Logout", fontWeight = FontWeight.SemiBold, fontSize = 18.sp
+                        text = "Logout", fontWeight = FontWeight.SemiBold, fontSize = 18.sp,
+                        fontFamily = KarlaFamily
                     )
                 }
             }
@@ -173,7 +175,7 @@ fun ProfileScreen(navController: NavHostController){
 
 @Preview(showBackground = true)
 @Composable
-fun ProfileScreenPreview(){
+fun ProfileScreenPreview() {
     val navController = rememberNavController()
     ProfileScreen(navController)
 }
